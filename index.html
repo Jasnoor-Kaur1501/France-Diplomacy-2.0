@@ -1,0 +1,1499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>France — UNHRC Kit · Day 2</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  :root {
+    --bg: #0d0d0f;
+    --surface: #141417;
+    --card: #1a1a1f;
+    --border: #2a2a32;
+    --accent: #3b5bdb;
+    --accent2: #c2410c;
+    --gold: #d4a017;
+    --text: #e8e8ec;
+    --muted: #8888a0;
+    --danger: #ef4444;
+    --success: #22c55e;
+    --france-blue: #002395;
+    --france-red: #ED2939;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+
+  /* HEADER */
+  .header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .flag {
+    display: flex;
+    height: 28px;
+    width: 42px;
+    border-radius: 3px;
+    overflow: hidden;
+    flex-shrink: 0;
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.1);
+  }
+  .flag div { flex: 1; }
+  .flag .b { background: #002395; }
+  .flag .w { background: #fff; }
+  .flag .r { background: #ED2939; }
+
+  .header-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+
+  .header-sub {
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-top: 1px;
+  }
+
+  .header-badge {
+    margin-left: auto;
+    background: var(--france-blue);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 20px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  /* NAV */
+  .nav {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding: 0 12px;
+  }
+  .nav::-webkit-scrollbar { display: none; }
+
+  .nav-btn {
+    background: none;
+    border: none;
+    color: var(--muted);
+    cursor: pointer;
+    padding: 12px 16px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+    border-bottom: 2px solid transparent;
+    transition: all 0.15s;
+    font-family: 'Inter', sans-serif;
+  }
+  .nav-btn:hover { color: var(--text); }
+  .nav-btn.active { color: #fff; border-bottom-color: var(--accent); }
+
+  /* MAIN */
+  .main { max-width: 900px; margin: 0 auto; padding: 32px 20px 80px; }
+
+  .tab { display: none; }
+  .tab.active { display: block; }
+
+  /* SECTION HEADERS */
+  .section-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+
+  .section-desc {
+    color: var(--muted);
+    font-size: 13px;
+    margin-bottom: 32px;
+    max-width: 620px;
+  }
+
+  /* CARDS */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px;
+    margin-bottom: 20px;
+    position: relative;
+  }
+
+  .card-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+
+  .card-title {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 14px;
+    color: #fff;
+  }
+
+  .speech-text {
+    font-size: 14px;
+    line-height: 1.85;
+    color: #d0d0de;
+    white-space: pre-wrap;
+  }
+
+  /* TAGS */
+  .tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-right: 6px;
+    margin-bottom: 6px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .tag-blue { background: rgba(59,91,219,0.2); color: #7b9ef8; border: 1px solid rgba(59,91,219,0.3); }
+  .tag-red { background: rgba(237,41,57,0.15); color: #f87171; border: 1px solid rgba(237,41,57,0.25); }
+  .tag-gold { background: rgba(212,160,23,0.15); color: #fbbf24; border: 1px solid rgba(212,160,23,0.25); }
+  .tag-green { background: rgba(34,197,94,0.12); color: #4ade80; border: 1px solid rgba(34,197,94,0.2); }
+
+  /* COPY BTN */
+  .copy-btn {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: rgba(59,91,219,0.15);
+    border: 1px solid rgba(59,91,219,0.3);
+    color: #7b9ef8;
+    padding: 5px 12px;
+    border-radius: 5px;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.15s;
+    letter-spacing: 0.04em;
+  }
+  .copy-btn:hover { background: rgba(59,91,219,0.3); }
+  .copy-btn.copied { background: rgba(34,197,94,0.15); border-color: rgba(34,197,94,0.3); color: #4ade80; }
+
+  /* POI TABLE */
+  .poi-table { width: 100%; border-collapse: collapse; margin-top: 4px; }
+  .poi-table th {
+    text-align: left;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .poi-table td {
+    padding: 12px 12px;
+    border-bottom: 1px solid rgba(42,42,50,0.6);
+    font-size: 13px;
+    vertical-align: top;
+  }
+  .poi-table tr:last-child td { border-bottom: none; }
+  .poi-table tr:hover td { background: rgba(255,255,255,0.02); }
+
+  .country-cell {
+    font-weight: 600;
+    color: #fff;
+    font-size: 12px;
+    white-space: nowrap;
+    min-width: 100px;
+  }
+
+  .intent-cell { min-width: 90px; }
+
+  .poi-text { color: #c8c8d8; line-height: 1.6; }
+
+  /* TREATY */
+  .treaty-doc {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    line-height: 1.9;
+    color: #b8c8d8;
+    background: #0f0f14;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 28px 28px;
+    white-space: pre-wrap;
+    margin-top: 8px;
+  }
+
+  .treaty-title-line {
+    font-size: 13px;
+    font-weight: 500;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 4px;
+  }
+
+  /* COMPETITION */
+  .comp-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin-bottom: 16px;
+  }
+  .comp-country {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .comp-threat {
+    font-size: 11px;
+    color: var(--danger);
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .comp-section { margin-top: 12px; }
+  .comp-section-title {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+  .comp-section p { font-size: 13px; color: #c0c0d0; }
+
+  /* DIVIDER */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 28px 0;
+  }
+
+  /* CHIT CARD */
+  .chit-card {
+    background: #0f1318;
+    border: 1px solid rgba(212,160,23,0.2);
+    border-radius: 6px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+    position: relative;
+  }
+  .chit-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+  .chit-text {
+    font-size: 13px;
+    color: #ccc;
+    line-height: 1.7;
+  }
+
+  /* WP */
+  .wp-clause {
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(42,42,50,0.5);
+    font-size: 13.5px;
+    color: #c8c8d8;
+    line-height: 1.75;
+  }
+  .wp-clause:last-child { border-bottom: none; }
+  .wp-clause-type {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .preamb { color: var(--gold); }
+  .operat { color: var(--success); }
+
+  /* SCROLL TO TOP */
+  .scroll-hint {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: var(--accent);
+    color: #fff;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 18px;
+    box-shadow: 0 4px 16px rgba(59,91,219,0.4);
+    border: none;
+    transition: transform 0.15s;
+  }
+  .scroll-hint:hover { transform: translateY(-2px); }
+
+  /* GRID */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 600px) { .grid-2 { grid-template-columns: 1fr; } }
+
+  /* ALERT */
+  .alert {
+    border-radius: 6px;
+    padding: 12px 16px;
+    font-size: 13px;
+    margin-bottom: 20px;
+    line-height: 1.6;
+  }
+  .alert-blue { background: rgba(59,91,219,0.1); border: 1px solid rgba(59,91,219,0.25); color: #a0b4f8; }
+  .alert-red { background: rgba(237,41,57,0.08); border: 1px solid rgba(237,41,57,0.2); color: #f8a0a0; }
+  .alert-gold { background: rgba(212,160,23,0.08); border: 1px solid rgba(212,160,23,0.2); color: #f8d888; }
+
+  .motion-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(59,91,219,0.12);
+    border: 1px solid rgba(59,91,219,0.2);
+    border-radius: 6px;
+    padding: 8px 14px;
+    font-size: 12px;
+    color: #a0b4f8;
+    margin-bottom: 20px;
+    font-style: italic;
+    line-height: 1.5;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="flag"><div class="b"></div><div class="w"></div><div class="r"></div></div>
+  <div>
+    <div class="header-title">France — UNHRC</div>
+    <div class="header-sub">Day 2 · Complete Delegation Kit</div>
+  </div>
+  <div class="header-badge">UNA-USA ROP</div>
+</div>
+
+<nav class="nav">
+  <button class="nav-btn active" onclick="showTab('speeches')">Speeches</button>
+  <button class="nav-btn" onclick="showTab('m1pois')">M1 POIs</button>
+  <button class="nav-btn" onclick="showTab('m2pois')">M2 POIs</button>
+  <button class="nav-btn" onclick="showTab('chits')">Chits</button>
+  <button class="nav-btn" onclick="showTab('treaties')">Treaties</button>
+  <button class="nav-btn" onclick="showTab('wp')">Western Bloc WP</button>
+  <button class="nav-btn" onclick="showTab('competition')">Competition Intel</button>
+</nav>
+
+<div class="main">
+
+<!-- ══════════════════════════════════════════════════════ SPEECHES -->
+<div id="tab-speeches" class="tab active">
+  <div class="section-label">Day 2 · France UNHRC</div>
+  <div class="section-title">Speeches</div>
+  <div class="section-desc">Motion 1 (Mod Caucus) and Motion 2 (Sol Mod, 60 sec). All written to not announce the agenda — speak as though this is already in motion.</div>
+
+  <!-- MOTION 1 SPEECH A -->
+  <div class="card">
+    <button class="copy-btn" onclick="copyCard(this)">Copy</button>
+    <div class="card-label">Motion 1 · Moderated Caucus · 90 sec · Version A — Moral clarity</div>
+    <div class="motion-badge">Examining the conditions and status of Internally Displaced People and International Refugees globally in order to provide protection and fundamental rights to such persons</div>
+    <div class="speech-text">Honourable Chair —
+
+France rises because the international refugee and displacement regime was not designed for the world we are currently governing.
+
+The 1951 Convention and its 1967 Protocol were written for a post-war European context. They were written for people fleeing defined political persecution, with clear borders and functioning asylum systems. They were not written for the 117 million people forcibly displaced today — people displaced by climate events, by stateless armed groups, by prolonged conflicts with no territorial front, by governments that persecute through bureaucratic attrition rather than overt political act.
+
+The protection gap is not an accident. It is what happens when the instrument outlives the conditions that produced it.
+
+France is not here to romanticise the Convention or condemn it. It is a foundational document and it remains operative. But this committee should be honest that the Refugee Status Determination process, in its current form, excludes categories of people who are in genuine danger and who have genuine rights. The IDP framework is softer still — the Guiding Principles on Internal Displacement are not binding. They are aspirational. And when a principle is aspirational, a state can safely ignore it without consequence.
+
+France proposes that this committee direct its work toward three things: strengthened reception conditions that are rights-consistent rather than deterrence-based, formal extension of protection frameworks to climate-displaced persons, and binding host-state obligations that are tied to international funding mechanisms so that burden-sharing is not voluntary and therefore uneven.
+
+What is offered here is not idealism. It is system design.
+
+The chair is thanked.</div>
+  </div>
+
+  <!-- MOTION 1 SPEECH B -->
+  <div class="card">
+    <button class="copy-btn" onclick="copyCard(this)">Copy</button>
+    <div class="card-label">Motion 1 · Moderated Caucus · 90 sec · Version B — Cold precision</div>
+    <div class="motion-badge">Examining the conditions and status of Internally Displaced People and International Refugees globally</div>
+    <div class="speech-text">Honourable Chair —
+
+There are 117 million forcibly displaced people in the world today. Not historically. Now. This morning.
+
+Of those, approximately 43 million are refugees with formal status under the 1951 Convention. The rest exist in a legal architecture that was not designed to protect them — internally displaced persons governed by non-binding Guiding Principles, climate migrants with no recognised legal category at all, stateless persons caught in jurisdictional voids that no existing framework reaches.
+
+France wants to be precise about what this means. It means that the majority of the world's displaced population is accessing humanitarian assistance — when they access it at all — through ad-hoc arrangements, bilateral charity, and the discretionary goodwill of host governments. That is not a protection regime. That is improvisation at scale.
+
+This committee has an opportunity to address three structural failures: first, the non-refoulement principle is inconsistently applied and under-enforced, with no binding accountability mechanism when states violate it; second, burden-sharing arrangements are voluntary and therefore collapse whenever a receiving country faces domestic political pressure; third, the IDP framework has no binding teeth.
+
+France's position is not that the existing framework is worthless. It is that a framework which covers 37% of the people it was conceptually designed to protect is a framework that requires urgent structural reform.
+
+The committee's attention to this is overdue.
+
+The chair is thanked.</div>
+  </div>
+
+  <!-- MOTION 1 SPEECH C -->
+  <div class="card">
+    <button class="copy-btn" onclick="copyCard(this)">Copy</button>
+    <div class="card-label">Motion 1 · Moderated Caucus · 90 sec · Version C — Use if someone else went first and got sentimental</div>
+    <div class="motion-badge">Examining the conditions and status of Internally Displaced People and International Refugees globally</div>
+    <div class="speech-text">Honourable Chair —
+
+France appreciates the humanity in what has been said in this chamber today. But France rises to redirect the committee toward the structural, because sentiment without architecture does not protect a single person.
+
+The displacement crisis is a governance crisis. It is not a shortage of goodwill — there is considerable goodwill on display in this room right now. It is a shortage of binding obligation, enforcement mechanisms, and financial burden-sharing structures that do not collapse the moment a host country changes government.
+
+Turkey hosts 3.6 million Syrians. Lebanon, with a population of 5 million, hosts an estimated 1.5 million — the highest per-capita ratio in the world. Uganda has absorbed over a million people from South Sudan and the DRC. These are not wealthy states. They are bearing a burden that the international community has designed for them to bear because voluntary burden-sharing frameworks allow wealthy states to decide that generosity is optional.
+
+France has a direct obligation here. France receives refugees. France contributes to UNHCR. But France also acknowledges that the European asylum system has produced deterrence policies that are in tension with the Convention — and France is naming that because credibility in this chamber requires honesty about one's own record as much as critique of others'.
+
+What this committee should produce is not a resolution that expresses concern. It should produce commitments — on reception conditions, on binding burden-sharing tied to GDP contributions, on climate displacement recognition — that are operationally real.
+
+The chair is thanked.</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- MOTION 2 SOL MOD -->
+  <div class="card">
+    <button class="copy-btn" onclick="copyCard(this)">Copy</button>
+    <div class="card-label">Motion 2 · Sol Mod · 60 sec · Focusing on cooperation with UNHRC and international bodies</div>
+    <div class="motion-badge">Focussing on the cooperation of member states with international bodies such as the UNHRC and other Global Partners</div>
+    <div class="speech-text">Honourable Chair —
+
+France rises to make a point that this committee should sit with.
+
+International bodies do not fail because they lack mandates. They fail because member states treat cooperation as optional when it is inconvenient.
+
+The Universal Periodic Review has been weaponised as a diplomatic performance rather than a genuine accountability mechanism. States prepare polished reports, accept recommendations selectively, and face no consequence for ignoring the rest. UNHCR field operations are chronically underfunded not because the money does not exist but because contributions are voluntary and therefore politically contingent.
+
+France's position is simple: cooperation is not a courtesy. It is the structural precondition for a functioning international human rights architecture. A state that participates in this body while systematically obstructing its field mechanisms is not a cooperating member — it is a spoiler with a seat at the table.
+
+The sol mod exists to make cooperation concrete. France is ready to work.
+
+The chair is thanked.</div>
+  </div>
+
+  <!-- MOTION 2 SOL MOD ALTERNATE -->
+  <div class="card">
+    <button class="copy-btn" onclick="copyCard(this)">Copy</button>
+    <div class="card-label">Motion 2 · Sol Mod · 60 sec · Alternate version — if you need to sound more collaborative</div>
+    <div class="motion-badge">Cooperation of member states with UNHRC and Global Partners</div>
+    <div class="speech-text">Honourable Chair —
+
+France moves for this sol mod because the most consequential gap in the international human rights system right now is not the absence of norms. We have norms. The gap is implementation — and implementation requires cooperation.
+
+UNHCR, the Special Rapporteurs, the treaty bodies — these institutions carry the weight of the entire international human rights architecture. When states deny access, withhold reporting, or contribute funding conditionally, they are not exercising sovereignty. They are dismantling a system they signed on to build.
+
+France proposes that this working session focus on three concrete outputs: an enhanced state-reporting mechanism with independent verification, a dedicated funding stream for UNHCR field operations that is insulated from political conditionality, and a formal framework for NGO and civil society access in displacement zones.
+
+We cannot build what we will not fund, and we cannot enforce what we will not monitor.
+
+The chair is thanked.</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ M1 POIs -->
+<div id="tab-m1pois" class="tab">
+  <div class="section-label">Motion 1 · IDP & Refugee Protection</div>
+  <div class="section-title">Points of Information</div>
+  <div class="section-desc">15 verbal POIs + 12 chit POIs. Verbal POIs are for the floor. Chit POIs target delegations during debate — pass as written slips to the speaker's table via the runner.</div>
+
+  <div class="alert alert-blue">Tactical note: POIs 1–5 are designed for delegations that take a sovereignty-first position. POIs 6–10 for delegations that emphasise burden-sharing without binding mechanism. POIs 11–15 are nuclear — deploy only if Somalia, China, or Iran says something specific and vulnerable.</div>
+
+  <div class="card">
+    <div class="card-title">Verbal POIs — Motion 1</div>
+    <table class="poi-table">
+      <thead>
+        <tr>
+          <th>No.</th>
+          <th>Target</th>
+          <th>Intent</th>
+          <th>POI</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="tag tag-blue">1</span></td>
+          <td class="country-cell">Any sovereignty-first delegation</td>
+          <td class="intent-cell"><span class="tag tag-red">Destabilise</span></td>
+          <td class="poi-text">The delegation speaks of sovereign discretion over refugee admission. Can the delegation clarify — under Article 33 of the 1951 Convention, to which your state is a signatory, non-refoulement is not discretionary. Is the delegation proposing withdrawal from the Convention, or mischaracterising its obligations?</td>
+        </tr>
+        <tr>
+          <td><span class="tag tag-blue">2</span></td>
+          <td class="country-cell">China / Russia / Iran</td>
+          <td class="intent-cell"><span class="tag tag-red">Expose</span></td>
+          <td class="poi-text">The delegation referenced the importance of state-led solutions. Can the delegation explain why the states producing the largest displacement flows — many of which are this committee's members — face no binding accountability mechanism for the conditions that force people to flee in the first place?</td>
+        </tr>
+        <tr>
+          <td><span class="tag tag-blue">3</span></td>
+          <td class="country-cell">Somalia</td>
+          <td class="intent-cell"><span class="tag tag-red">Sharp</span></td>
+          <td class="poi-text">The delegation speaks to regional solutions. Can it clarify what formal binding mechanism Somalia's government has established to protect internally displaced persons — given that approximately 3.8 million Somalis are currently displaced within the country's own borders?</td>
+        </tr>
+        <tr>
+          <td><span class="tag tag-blue">4</span></td>
+          <td class="country-cell">Venezuela</td>
+          <td class="intent-cell"><span class="tag tag-red">Direct</span></td>
+          <td class="poi-text">The delegation speaks to refugee rights. Venezuela has produced over 7.7 million refugees and migrants — the largest displacement crisis in Latin American history. Can the delegation explain what policy changes the Venezuelan government is prepared to make to address the conditions causing that displacement?</td>
+        </tr>
+        <tr>
+          <td><span class="tag tag-blue">5</span></td>
+          <td class="country-cell">Any delegation opposing binding obligations</td>
+          <td class="intent-cell"><span class="tag tag-gold">Structural</span></td>
+          <td class="poi-text">The delegation advocates for voluntary measures. Can it cite a single instance in the past decade where a voluntary burden-sharing arrangement met its stated targets without a binding enforcement mechanism? France is genuinely interested in the precedent.</td>
+        </tr>
+        <tr>
+          <td><span class="tag tag-blue">6</span></td>
+          <td class="country-cell">Any Global South delegation</td>
+          <td class="intent-cell"><span class="tag tag-green">Build alliance</span></td>
+          <td class="poi-text">The delegation raises the disproportionate burden on developing host states. France agrees. Can the delegation elaborate on what a funding formula tied to GDP contributions — rather than voluntary pledges — would need to look like for their state to consider it operationally credible?</td>
+        </tr>
+        <tr>
+          <td><span class="tag tag-blue">7</span></td>
+          <td class="country-cell">USA / UK / any Western delegation</td>
+          <td class="intent-cell"><span class="tag tag-gold">Precision</span></td>
+          <td class="poi-text">France notes the delegation's support for the 1951 Convention framework. Does the delegation consider the current framework adequate for climate-displaced persons — who have no legal category under existing international refugee law — and if not, what specific mechanism is the delegation prepared to support?</td>
+        </tr>
+        <tr>
+          <td><span class="tag tag-blue">8</span></td>
+          <td class="country-cell">Bangladesh / Indonesia</td>
+          <td class="intent-cell"><span class="tag tag-green">Alliance</span></td>
+          <td class="poi-text">The delegation speaks to the vulnerability of displaced communities. France notes Bangladesh hosts over a million Rohingya refugees. Can the delegation speak to what international support mechanisms have been insufficient — and what specifically France and the European partners could do that is not currently being done?</td>
+        </tr>
+        <tr>
+          <td><span class="tag tag-blue">9</span></td>
+          <td class="country-cell">Iran</td>
+          <td class="intent-cell"><span class="tag tag-red">Destabilise</span></td>
+          <td class="poi-text">Iran hosts approximately 3.4 million Afghan refugees — France acknowledges this as a genuine burden. However, can the delegation explain how Iran's denial of documentation and legal work rights to displaced Afghans is consistent with the protection framework this delegation appears to advocate?</td>
+        </tr>
+        <tr>
+          <td><span class="tag tag-blue">10</span></td>
+          <td class="country-cell">Any delegation citing UNHCR without funding commitment</td>
+          <td class="intent-cell"><span class="tag tag-red">Sharp</span></td>
+          <td class="poi-text">The delegation references UNHCR operations extensively. UNHCR's 2023 budget gap was over $2 billion USD. Can the delegation indicate what specific and binding contribution increase its government is prepared to announce in this session, rather than simply endorsing UNHCR's role in the abstract?</td>
+        </tr>
+        <tr>
+          <td><span class="tag tag-blue">11</span></td>
+          <td class="country-cell">China</td>
+          <td class="intent-cell"><span class="tag tag-red">Nuclear</span></td>
+          <td class="poi-text">China speaks to multilateral cooperation on displacement. China has not accepted a single UNHCR-recognised refugee for resettlement in its territory. Does the delegation consider this consistent with multilateral cooperation — or is China's position that cooperation applies to other states and not itself?</td>
+        </tr>
+        <tr>
+          <td><span class="tag tag-blue">12</span></td>
+          <td class="country-cell">Russia</td>
+          <td class="intent-cell"><span class="tag tag-red">Direct</span></td>
+          <td class="poi-text">Russia speaks to the rights of displaced persons. There are currently over 10 million internally displaced Ukrainians and approximately 6 million Ukrainian refugees abroad — the fastest and largest displacement event in Europe since the Second World War. Can the delegation explain how these figures are consistent with any protection framework Russia claims to support?</td>
+        </tr>
+        <tr>
+          <td><span class="tag tag-blue">13</span></td>
+          <td class="country-cell">Any delegation opposing climate displacement recognition</td>
+          <td class="intent-cell"><span class="tag tag-gold">Structural</span></td>
+          <td class="poi-text">The delegation appears reluctant to extend protection frameworks to climate-displaced persons. In 2020, the UN Human Rights Committee ruled that states cannot return individuals to countries where climate change poses a threat to life. The legal trajectory is clear. Can the delegation explain on what basis it believes delay is defensible?</td>
+        </tr>
+        <tr>
+          <td><span class="tag tag-blue">14</span></td>
+          <td class="country-cell">Somalia</td>
+          <td class="intent-cell"><span class="tag tag-red">If they speak on regional solutions</span></td>
+          <td class="poi-text">The delegation advocates regional frameworks. France is curious — the IGAD regional displacement framework for the Horn of Africa has been in place since 2017. Can the delegation point to one specific protection outcome that framework has produced for the 3.8 million internally displaced Somalis that would not have existed without it?</td>
+        </tr>
+        <tr>
+          <td><span class="tag tag-blue">15</span></td>
+          <td class="country-cell">Any delegation</td>
+          <td class="intent-cell"><span class="tag tag-gold">Closer — use last</span></td>
+          <td class="poi-text">The delegation has spoken to the importance of dignity and rights for displaced persons. France agrees entirely. Can the delegation then clarify its position on stateless persons — estimated at 4.4 million globally — who fall outside the refugee framework entirely, and what specific protection mechanism it is prepared to support for that population?</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- CHIT POIs M1 -->
+  <div class="card" style="margin-top: 24px;">
+    <div class="card-title">Chit POIs — Motion 1 <span class="tag tag-gold">Pass to runner · Floor only during debate</span></div>
+    <div class="alert alert-gold" style="margin-top: 12px;">These are written to pass on paper slips. Format: "To: [COUNTRY] — From: France" then the question below. Keep the slip short — they read it fast.</div>
+
+    <div style="margin-top: 16px;">
+      <div class="chit-card">
+        <div class="chit-label">To: Germany / Sweden / Canada · Alliance-building</div>
+        <div class="chit-text">France is advancing a clause on binding burden-sharing tied to GDP. Would [country] consider co-sponsoring language on mandatory UNHCR funding floors? Think this aligns with your position on international finance mechanisms.</div>
+      </div>
+      <div class="chit-card">
+        <div class="chit-label">To: Bangladesh · Rohingya leverage</div>
+        <div class="chit-text">France recognises Bangladesh carries a disproportionate burden on Rohingya displacement. If we advance language on binding burden-sharing and host-state compensation mechanisms, would Bangladesh support climate-displacement recognition in return? Worth discussing.</div>
+      </div>
+      <div class="chit-card">
+        <div class="chit-label">To: Lebanon / Jordan / Turkey · Host burden bloc</div>
+        <div class="chit-text">France is proposing GDP-linked mandatory contributions to UNHCR — specifically to support frontline host states like yours. If we frame this around host-state rights not just refugee rights, do you think your delegation could co-sponsor? France needs credible Global South voices on this.</div>
+      </div>
+      <div class="chit-card">
+        <div class="chit-label">To: New Zealand / Australia · Climate displacement</div>
+        <div class="chit-text">France is proposing formal legal recognition of climate-displaced persons in our working paper. The Pacific context is the most compelling case for this. Would your delegation be willing to add a preambular clause acknowledging Pacific climate displacement specifically? Happy to give you naming credit.</div>
+      </div>
+      <div class="chit-card">
+        <div class="chit-label">To: South Africa / Kenya · African IDP bloc</div>
+        <div class="chit-text">The Kampala Convention is the strongest binding IDP framework in the world and it's African — France wants to reference it explicitly in our working paper as a model for global adoption. Would your delegation support this framing and consider co-sponsoring?</div>
+      </div>
+      <div class="chit-card">
+        <div class="chit-label">To: USA · Burden-sharing leverage</div>
+        <div class="chit-text">France notes the US has historically been the largest UNHCR donor. France's paper proposes making this kind of contribution binding rather than voluntary — not an increase in percentage, just in consistency. Would the US delegation consider language that frames this as "institutionalising existing commitments" rather than new obligations?</div>
+      </div>
+      <div class="chit-card">
+        <div class="chit-label">To: India · IDP framework</div>
+        <div class="chit-text">India has over 600,000 internally displaced persons but has not ratified the 1951 Convention. France is not asking India to change that position — but would India consider supporting soft IDP language in the working paper framed around domestic welfare rather than international obligation? Gives India room to support without sovereignty exposure.</div>
+      </div>
+      <div class="chit-card">
+        <div class="chit-label">To: Uganda · Model host state</div>
+        <div class="chit-text">Uganda's refugee settlement model — where displaced persons receive land and work rights — is one of the most cited positive precedents in the UNHCR literature. France wants to name it explicitly in our paper as a model to be replicated and funded internationally. Would Uganda co-sponsor in exchange for that recognition?</div>
+      </div>
+      <div class="chit-card">
+        <div class="chit-label">To: Somalia · If they're being aggressive</div>
+        <div class="chit-text">France isn't interested in attacking Somalia's position — but France is curious what solution Somalia is actually proposing for its 3.8 million internally displaced citizens. If you have a concrete mechanism, France would genuinely consider incorporating it. What does Somalia want the working paper to say?</div>
+      </div>
+      <div class="chit-card">
+        <div class="chit-label">To: Venezuela · Disarm preemptively</div>
+        <div class="chit-text">France's paper focuses on host state obligations and international funding — not on assigning blame to displacement-producing states. If Venezuela focuses its contribution on regional burden-sharing in Latin America (Colombia, Peru, Ecuador context), there may be room to align. France isn't looking for a fight.</div>
+      </div>
+      <div class="chit-card">
+        <div class="chit-label">To: Any wavering delegation</div>
+        <div class="chit-text">France's working paper has open co-sponsor slots. We've written it to give each partner ownership over specific clauses — you don't have to endorse the whole paper to sign on. Would appreciate 5 minutes in the next unmod to walk through what might work for your delegation.</div>
+      </div>
+      <div class="chit-card">
+        <div class="chit-label">To: Netherlands / Belgium · European solidarity</div>
+        <div class="chit-text">France is advancing European bloc language on asylum system reform and burden-sharing. If we frame this as EU states collectively leading on international standards — rather than internal EU politics — would your delegation co-sponsor? Needs European voices to land credibly.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ M2 POIs -->
+<div id="tab-m2pois" class="tab">
+  <div class="section-label">Motion 2 · Cooperation with UNHRC & International Bodies</div>
+  <div class="section-title">Points of Information</div>
+  <div class="section-desc">15 verbal POIs + 10 chit POIs for the sol mod and surrounding debate on state cooperation with international mechanisms.</div>
+
+  <div class="alert alert-red">Warning: China, Venezuela, Iran, and Russia will likely challenge the legitimacy of UNHRC mechanisms. Have POIs 3, 7, and 11 ready the moment they speak.</div>
+
+  <div class="card">
+    <div class="card-title">Verbal POIs — Motion 2</div>
+    <table class="poi-table">
+      <thead>
+        <tr>
+          <th>No.</th>
+          <th>Target</th>
+          <th>Intent</th>
+          <th>POI</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="tag tag-blue">1</span></td>
+          <td class="country-cell">Any delegation endorsing voluntary cooperation only</td>
+          <td class="intent-cell"><span class="tag tag-gold">Structural</span></td>
+          <td class="poi-text">The delegation advocates for voluntary cooperation with international bodies. Can it clarify: of the 193 UN member states, 85 have outstanding UPR recommendations they have accepted but not implemented. What mechanism does the delegation propose to close that gap if cooperation remains voluntary?</td>
+        </tr>
+        <tr>
+          <td><span class="tag tag-blue">2</span></td>
+          <td class="country-cell">China</td>
+          <td class="intent-cell"><span class="tag tag-red">Direct</span></td>
+          <td class="poi-text">China speaks to the importance of state cooperation with international bodies. China has denied access to the UN High Commissioner for Human Rights for an independent investigation into Xinjiang. Can the delegation explain how this is consistent with the cooperation framework it appears to be endorsing?</td>
+        </tr>
+        <tr>
+          <td><span class="tag tag-blue">3</span></td>
+          <td class="country-cell">Iran</td>
+          <td class="intent-cell"><span class="tag tag-red">Sharp</span></td>
+          <td class="poi-text">Iran speaks to multilateral cooperation. Iran has a standing Special Rapporteur mandate from this very body — and has denied the Rapporteur entry since 2005. Can the delegation explain what it means by cooperation when it has structurally excluded the mechanism of cooperation this committee created?</td>
+        </tr>
+        <tr>
+          <td><span class="tag tag-blue">4</span></td>
+          <td class="country-cell">Venezuela</td>
+          <td class="intent-cell"><span class="tag tag-red">Direct</span></td>
+          <td class="poi-text">Venezuela's government signed a Memorandum of Understanding with OHCHR in 2019 allowing monitoring access. That access has since been systematically restricted. Can the delegation clarify whether Venezuela considers signing agreements with international bodies a binding commitment or an initial posture?</td>
+        </tr>
+        <tr>
+          <td><span class="tag tag-blue">5</span></td>
+          <td class="country-cell">Somalia</td>
+          <td class="intent-cell"><span class="tag tag-gold">Probe</span></td>
+          <td class="poi-text">Somalia speaks to cooperation with international partners. Can the delegation clarify Somalia's current status on UPR follow-up implementation — and what structural limitations, if any, it considers a legitimate basis for delayed cooperation with UNHCR field mechanisms?</td>
+        </tr>
+        <tr>
+          <td><span class="tag tag-blue">6</span></td>
+          <td class="country-cell">Any delegation questioning Western states</td>
+          <td class="intent-cell"><span class="tag tag-gold">Preemptive</span></td>
+          <td class="poi-text">France anticipates the delegation may raise concerns about selective enforcement of international norms by Western states — and France is prepared to engage that. But can the delegation first specify whether its position is that international accountability mechanisms should apply universally, or that they should apply to no one?</td>
+        </tr>
+        <tr>
+          <td><span class="tag tag-blue">7</span></td>
+          <td class="country-cell">Any delegation citing sovereignty</td>
+          <td class="intent-cell"><span class="tag tag-red">Nuclear</span></td>
+          <td class="poi-text">The delegation invokes sovereignty as a basis for limiting cooperation with this body. France notes that every state in this room voluntarily joined the UN and accepted the Charter's Article 55 and 56 obligations on human rights. Can the delegation clarify whether it is arguing that those voluntary commitments are non-binding once ratified — and if so, what exactly this committee is for?</td>
+        </tr>
+        <tr>
+          <td><span class="tag tag-blue">8</span></td>
+          <td class="country-cell">Any delegation praising UPR without binding follow-up</td>
+          <td class="intent-cell"><span class="tag tag-gold">Precision</span></td>
+          <td class="poi-text">The delegation endorses the Universal Periodic Review. France agrees it is a valuable mechanism. But the UPR has no enforcement arm — states accept recommendations at will and face no consequence for non-implementation. Does the delegation support establishing an independent verification mechanism for UPR implementation, or only the review process itself?</td>
+        </tr>
+        <tr>
+          <td><span class="tag tag-blue">9</span></td>
+          <td class="country-cell">Russia</td>
+          <td class="intent-cell"><span class="tag tag-red">Direct</span></td>
+          <td class="poi-text">Russia speaks to international cooperation. Russia was suspended from this body in April 2022 by General Assembly vote — 93 states in favour, 24 opposed. France notes Russia is now speaking in this chamber and asks: does the delegation consider that suspension to have been a legitimate act of this body, or does it contest the authority of the GA to enforce membership conditions?</td>
+        </tr>
+        <tr>
+          <td><span class="tag tag-blue">10</span></td>
+          <td class="country-cell">Any delegation praising NGO inclusion in the abstract</td>
+          <td class="intent-cell"><span class="tag tag-gold">Specific</span></td>
+          <td class="poi-text">The delegation supports civil society and NGO participation in international human rights mechanisms. Can the delegation indicate whether it supports NGO access during country-specific OHCHR investigations — including in situations where the state under investigation has restricted domestic civil society?</td>
+        </tr>
+        <tr>
+          <td><span class="tag tag-blue">11</span></td>
+          <td class="country-cell">China · if they cite developing world support</td>
+          <td class="intent-cell"><span class="tag tag-red">Specific deflection counter</span></td>
+          <td class="poi-text">China has noted that many developing states voted against resolutions critical of China in this body. France would point out that in 2022, 50 states signed a joint statement at OHCHR expressing concern about human rights in Xinjiang — and those 50 include states from Africa, Asia, Latin America, and Europe. Can the delegation engage with those signatories' positions rather than characterising opposition as exclusively Western?</td>
+        </tr>
+        <tr>
+          <td><span class="tag tag-blue">12</span></td>
+          <td class="country-cell">Any delegation that speaks on cooperation but does not cite funding</td>
+          <td class="intent-cell"><span class="tag tag-gold">Money test</span></td>
+          <td class="poi-text">The delegation supports strengthened international body cooperation. The OHCHR operates on approximately 0.5% of the total UN budget. UNHCR faces a chronic annual funding gap. Can the delegation specify whether it supports a mandatory assessed contribution mechanism for these bodies — rather than the current voluntary model that predictably underfunds them?</td>
+        </tr>
+        <tr>
+          <td><span class="tag tag-blue">13</span></td>
+          <td class="country-cell">Any delegation on Special Rapporteurs</td>
+          <td class="intent-cell"><span class="tag tag-gold">Precision</span></td>
+          <td class="poi-text">The delegation references Special Rapporteur mechanisms. As of 2024, over 40 Special Rapporteur country visit requests have been pending for more than five years without state response. Can the delegation indicate whether it supports automatic country visit access for mandate holders — or whether it believes states retain the right to indefinitely defer?</td>
+        </tr>
+        <tr>
+          <td><span class="tag tag-blue">14</span></td>
+          <td class="country-cell">Somalia · if they attack Western states</td>
+          <td class="intent-cell"><span class="tag tag-red">Reframe</span></td>
+          <td class="poi-text">The delegation raises valid concerns about Western states' selective engagement with international bodies. France is not here to dispute that selectivity is a real problem — it is. But can the delegation explain how Somalia's own record on UNHCR and OHCHR cooperation — specifically in relation to Al-Shabaab-controlled territory and humanitarian access — demonstrates a more consistent standard?</td>
+        </tr>
+        <tr>
+          <td><span class="tag tag-blue">15</span></td>
+          <td class="country-cell">Closing POI — any delegation</td>
+          <td class="intent-cell"><span class="tag tag-gold">Principled</span></td>
+          <td class="poi-text">France has one question it has carried through this debate and not yet received a satisfying answer to: if every state in this room agrees that human rights protection requires effective international bodies — and every state appears to agree on this — can any delegation explain why those bodies remain voluntary, underfunded, and unable to enforce their own findings? France would like to hear what the honest answer is.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- CHIT POIs M2 -->
+  <div class="card" style="margin-top: 24px;">
+    <div class="card-title">Chit POIs — Motion 2 <span class="tag tag-gold">Paper slips · During sol mod</span></div>
+
+    <div style="margin-top: 16px;">
+      <div class="chit-card">
+        <div class="chit-label">To: Germany · Verified compliance mechanism</div>
+        <div class="chit-text">France is proposing an independent UPR follow-up verification mechanism in the Western bloc WP. Wondering if Germany would co-author the specific clause — given Germany's record on ICC cooperation, would carry weight. Happy to give Germany primary authorship on that operative paragraph.</div>
+      </div>
+      <div class="chit-card">
+        <div class="chit-label">To: Canada · Civil society access</div>
+        <div class="chit-text">Canada's position on civil society and NGO inclusion is strong. France's sol mod paper has a clause on guaranteed NGO access in OHCHR field investigations. If Canada co-sponsors that specific clause, France will support Canada's language on indigenous rights in the displacement section. Trade worth making?</div>
+      </div>
+      <div class="chit-card">
+        <div class="chit-label">To: Sweden / Netherlands · OHCHR funding</div>
+        <div class="chit-text">France is pushing for assessed mandatory contributions to OHCHR as a percentage of state GDP. This is a big ask but the argument is clean — if you support the mechanism, fund it. Would either of your delegations be willing to co-sponsor this as a pilot clause? Even symbolic support from Sweden carries weight here.</div>
+      </div>
+      <div class="chit-card">
+        <div class="chit-label">To: Japan / South Korea · Quiet partners</div>
+        <div class="chit-text">France's working paper on cooperation frameworks is moderate and legally grounded — no confrontational language toward specific states. If Japan or ROK prefers to engage on institutional strengthening rather than country-specific debates, the Western bloc paper gives you that option. Worth a look in the next unmod.</div>
+      </div>
+      <div class="chit-card">
+        <div class="chit-label">To: Kenya / Ghana · African Group bridge</div>
+        <div class="chit-text">France recognises the African Group's concerns about selective enforcement. Our working paper's cooperation framework is explicitly universal — no carve-outs for Western states. If we add preambular language acknowledging historical selectivity as a problem to be corrected, would your delegation consider the paper more credible? France genuinely wants African Group input, not just signatures.</div>
+      </div>
+      <div class="chit-card">
+        <div class="chit-label">To: Indonesia / Malaysia · OIC bloc</div>
+        <div class="chit-text">France's cooperation framework focuses on institutional access, not country-specific mandates — which we understand the OIC has concerns about. If Indonesia or Malaysia has specific language on how international body access should be structured to respect diverse governance contexts, France is open to incorporating it. The paper is stronger with that perspective.</div>
+      </div>
+      <div class="chit-card">
+        <div class="chit-label">To: New Zealand / Australia · Five Eyes credibility</div>
+        <div class="chit-text">France needs credible English-speaking democratic voices on the binding UPR follow-up clause. New Zealand has been consistent on international accountability — would you consider co-sponsoring specifically that clause? Doesn't require signing the whole paper. One clause co-sponsorship is legitimate in most ROP frameworks.</div>
+      </div>
+      <div class="chit-card">
+        <div class="chit-label">To: Brazil · Bridge between blocs</div>
+        <div class="chit-text">Brazil has historically played bridge between Global South concerns and international institutional reform. France's paper has language that both blocs can get behind if framed correctly. Would Brazil be willing to review the draft and suggest adjustments that might bring in two or three more developing world delegations? France will name Brazil as a contributing drafter.</div>
+      </div>
+      <div class="chit-card">
+        <div class="chit-label">To: India · Quiet non-confrontational ask</div>
+        <div class="chit-text">France's cooperation paper has no India-specific language and no binding mandates that would require India to change its current Special Rapporteur access position. The paper focuses on institutional funding and reporting frameworks. Would India consider a general co-sponsorship on those technical clauses only? No political exposure required.</div>
+      </div>
+      <div class="chit-card">
+        <div class="chit-label">To: Any undecided delegation</div>
+        <div class="chit-text">France's Western bloc paper is written to be co-sponsored by non-Western delegations without requiring political alignment with Western positions. If your delegation has a specific concern about how international body cooperation is framed in the paper, France would prefer to hear it directly than lose your support. What would make this work for you?</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ CHITS -->
+<div id="tab-chits" class="tab">
+  <div class="section-label">Substantive Chair Chits</div>
+  <div class="section-title">Procedural & Strategic Chair Notes</div>
+  <div class="section-desc">These go to the Chair only — not to other delegations. They are substantive interventions, procedural observations, and points France wants on the formal record. Each is complete as written.</div>
+
+  <div class="alert alert-gold">Format: Write "To: Chair — From: France, [country code]" at top of slip. Pass through dais runner or directly to the Chair's table. These are not questions — they are formal communications.</div>
+
+  <div class="card">
+    <div class="card-title">Chair Chits — Motion 1 (IDP & Refugees)</div>
+    <div style="margin-top: 12px;">
+      <div class="chit-card">
+        <div class="chit-label">Chair Chit M1 · 01 — Procedural clarity on IDP vs refugee framing</div>
+        <div class="chit-text">France respectfully draws the Chair's attention to a distinction that several delegations appear to be collapsing in debate: internally displaced persons are governed by the Guiding Principles on Internal Displacement, which are non-binding, while refugees hold status under the 1951 Convention. These are different legal instruments with different enforceability. France requests that the Chair encourage delegations to be precise about which category they are addressing to maintain the substantive rigour of debate.</div>
+      </div>
+      <div class="chit-card">
+        <div class="chit-label">Chair Chit M1 · 02 — Non-refoulement principle being mischaracterised</div>
+        <div class="chit-text">France notes that at least one delegation has characterised non-refoulement as a discretionary principle subject to national security carve-outs at state discretion. France submits for the Chair's awareness that Article 33(2) of the 1951 Convention provides a narrow exception for individuals who are a danger to the security of the host country — it does not provide a broad national security discretion to return individuals to persecution. France requests that this distinction be noted in the formal record of debate.</div>
+      </div>
+      <div class="chit-card">
+        <div class="chit-label">Chair Chit M1 · 03 — Request for ruling on relevance</div>
+        <div class="chit-text">France respectfully notes that the current line of debate has shifted significantly toward bilateral political grievances unrelated to the motion's substantive scope on refugee and IDP protection conditions. France requests that the Chair exercise their discretion to redirect debate toward the motion's operative question — specifically, what protection conditions and fundamental rights mechanisms this committee proposes to strengthen.</div>
+      </div>
+      <div class="chit-card">
+        <div class="chit-label">Chair Chit M1 · 04 — Statistical correction for the record</div>
+        <div class="chit-text">A delegation cited the global displaced population as approximately 80 million. France submits for the record that UNHCR's 2024 Global Trends Report places the figure at 117.3 million forcibly displaced persons as of end-2023. France requests this figure be noted for the accuracy of the committee's deliberative record, as the scale of the crisis is directly relevant to the adequacy of the measures being proposed.</div>
+      </div>
+      <div class="chit-card">
+        <div class="chit-label">Chair Chit M1 · 05 — France's working paper intent</div>
+        <div class="chit-text">France wishes to formally notify the Chair that France is preparing a working paper on this motion and requests guidance on the preferred submission format and timing. France's paper will advance language on binding burden-sharing mechanisms, climate displacement recognition, and host-state support frameworks. France anticipates circulating a draft to interested delegations during the next unmoderated caucus and would appreciate the Chair confirming the co-sponsorship deadline.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Chair Chits — Motion 2 (Cooperation with UNHRC)</div>
+    <div style="margin-top: 12px;">
+      <div class="chit-card">
+        <div class="chit-label">Chair Chit M2 · 01 — Distinguishing cooperation types</div>
+        <div class="chit-text">France draws the Chair's attention to the fact that debate is conflating three distinct forms of international body cooperation: UPR reporting and acceptance, Special Rapporteur access, and OHCHR field investigation access. These carry different legal weight and different compliance records across member states. France would find it procedurally useful if the Chair invited delegations to specify which cooperation mechanism they are addressing, as the policy solutions for each differ substantially.</div>
+      </div>
+      <div class="chit-card">
+        <div class="chit-label">Chair Chit M2 · 02 — Sovereignty argument in legal context</div>
+        <div class="chit-text">France notes for the Chair that multiple delegations are invoking the sovereignty principle as a basis for limiting cooperation with this body. France submits that UN Charter Article 2(7) — which is the sovereignty provision typically cited — does not preclude international human rights monitoring, as the ICJ's advisory opinion in the Namibia case and subsequent treaty body jurisprudence have consistently held. France requests that this legal context be available to the Chair for reference if the sovereignty argument is raised as a procedural objection to any draft resolution clause.</div>
+      </div>
+      <div class="chit-card">
+        <div class="chit-label">Chair Chit M2 · 03 — Funding gap for the record</div>
+        <div class="chit-text">France submits the following figures for the formal record of debate: OHCHR's 2024 budget was approximately $260 million, representing 0.49% of the total UN budget. UNHCR's 2023 funding gap was $2.1 billion USD. France considers these figures materially relevant to any committee discussion of cooperation with international bodies, as they establish that the primary constraint on effective cooperation is political will and funding — not institutional capacity.</div>
+      </div>
+      <div class="chit-card">
+        <div class="chit-label">Chair Chit M2 · 04 — Request to note selective cooperation pattern</div>
+        <div class="chit-text">France requests that the Chair note for the record that several states currently speaking in support of enhanced international body cooperation have outstanding Special Rapporteur visit requests that have been pending for between three and twelve years without response. France is not naming states in this chit, but requests the Chair confirm whether such a pattern may be formally noted in the committee's deliberative summary as contextually relevant to the credibility of cooperation commitments made in this session.</div>
+      </div>
+      <div class="chit-card">
+        <div class="chit-label">Chair Chit M2 · 05 — France's sol mod paper intent</div>
+        <div class="chit-text">France formally notifies the Chair that it will advance language during the sol mod on three operative mechanisms: an independent UPR implementation verification framework, assessed mandatory OHCHR contributions as a percentage of state GDP, and guaranteed NGO access in OHCHR field investigations. France requests the Chair's guidance on whether these three areas fall within the sol mod's remit as framed or whether the Chair wishes France to narrow the scope before speaking.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ TREATIES -->
+<div id="tab-treaties" class="tab">
+  <div class="section-label">Diplomatic Instruments</div>
+  <div class="section-title">Treaties</div>
+  <div class="section-desc">One bilateral with Germany. One multilateral (Western Democratic Bloc). These are presented as "frameworks France has been developing — we'd value your input" — not finished documents. That framing turns signatories into collaborators.</div>
+
+  <!-- BILATERAL -->
+  <div class="card">
+    <button class="copy-btn" onclick="copyCard(this)">Copy</button>
+    <div class="card-label">Bilateral Treaty · France — Federal Republic of Germany</div>
+    <div class="card-title">Franco-German Framework Agreement on Refugee Protection, Displacement Response, and International Institutional Cooperation</div>
+    <div class="treaty-doc">BILATERAL FRAMEWORK AGREEMENT
+
+Between:
+THE FRENCH REPUBLIC, hereinafter "France"
+THE FEDERAL REPUBLIC OF GERMANY, hereinafter "Germany"
+
+Collectively referred to as "the Parties"
+
+────────────────────────────────────────────
+PREAMBLE
+────────────────────────────────────────────
+
+RECALLING the longstanding Franco-German partnership as the foundational axis of
+European integration and shared democratic governance,
+
+REAFFIRMING the Parties' obligations under the 1951 Convention Relating to the Status
+of Refugees and its 1967 Protocol, the 1966 International Covenant on Civil and Political
+Rights, and the European Convention on Human Rights,
+
+RECOGNISING that Europe hosts a disproportionate share of the global asylum-seeker
+population relative to its capacity to receive them under current institutional arrangements,
+
+ACKNOWLEDGING that voluntary burden-sharing mechanisms within the European Union
+have repeatedly failed to produce equitable distribution of protection responsibilities,
+
+NOTING that climate-induced displacement constitutes an emerging and structurally
+unaddressed category of forced migration for which no binding legal framework currently
+exists,
+
+DETERMINED to advance, within the framework of the United Nations Human Rights
+Council, a binding international protection regime that closes the legal and financial gaps
+in the current refugee and displacement architecture,
+
+HAVE AGREED AS FOLLOWS:
+
+────────────────────────────────────────────
+PART I — REFUGEE PROTECTION AND ASYLUM REFORM
+────────────────────────────────────────────
+
+ARTICLE 1 — Harmonised Reception Standards
+
+1.1  The Parties commit to establishing harmonised minimum reception standards for
+     asylum seekers that exceed the current EU Reception Conditions Directive, with
+     specific attention to: access to legal representation within 48 hours of arrival;
+     documentation issuance within 30 days; and housing conditions meeting
+     established welfare benchmarks.
+
+1.2  The Parties will jointly develop a model reception framework for voluntary
+     adoption by non-EU member states, to be advanced through UNHCR technical
+     assistance channels.
+
+ARTICLE 2 — Non-Refoulement Enforcement Mechanism
+
+2.1  The Parties acknowledge that non-refoulement under Article 33 of the 1951
+     Convention is a non-derogable norm and commit to establishing a bilateral
+     review mechanism to flag instances where third-state compliance is questionable.
+
+2.2  Where the bilateral mechanism identifies a potential violation, the Parties will
+     jointly raise the matter through the appropriate UNHCR or treaty body channel.
+
+ARTICLE 3 — Climate Displacement Recognition
+
+3.1  The Parties commit to jointly advancing, in all relevant international fora
+     including the UNHRC, the formal legal recognition of climate-displaced persons
+     as a distinct category requiring international protection.
+
+3.2  The Parties will support the development of a Climate Displacement Protocol
+     to the 1951 Convention, and will co-author a model clause for consideration at
+     the next UNHCR Executive Committee session.
+
+────────────────────────────────────────────
+PART II — BURDEN-SHARING AND INSTITUTIONAL FUNDING
+────────────────────────────────────────────
+
+ARTICLE 4 — Binding European Burden-Sharing
+
+4.1  The Parties commit to jointly advocating for a binding EU burden-sharing
+     mechanism based on a composite index incorporating: GDP per capita;
+     population size; unemployment rate; and existing asylum applicant numbers.
+
+4.2  The Parties oppose any burden-sharing arrangement that allows financial
+     payment in lieu of physical reception, which they consider inconsistent with
+     the non-derogable nature of international protection obligations.
+
+ARTICLE 5 — UNHCR and OHCHR Funding Floor
+
+5.1  The Parties commit to maintaining their UNHCR voluntary contributions at
+     or above current levels and to jointly advocating for an assessed mandatory
+     contribution mechanism through which all UN member states contribute to
+     UNHCR operations proportional to GDP.
+
+5.2  The Parties will jointly table a resolution at the UNHRC supporting an
+     increase in the OHCHR's assessed budget allocation from 0.49% to at
+     least 1.5% of the total UN budget over a five-year period.
+
+────────────────────────────────────────────
+PART III — INTERNATIONAL BODY COOPERATION
+────────────────────────────────────────────
+
+ARTICLE 6 — UPR Implementation Verification
+
+6.1  The Parties support the establishment of an independent verification
+     mechanism for UPR recommendations accepted by member states, with
+     mandatory reporting at the midpoint of each review cycle.
+
+6.2  The Parties commit to full implementation of all UPR recommendations
+     they have accepted and to publishing annual implementation progress reports.
+
+ARTICLE 7 — Special Rapporteur Access
+
+7.1  The Parties extend standing invitations to all UN Special Rapporteurs and
+     will process visit requests within 90 days of submission.
+
+7.2  The Parties jointly advocate for a General Assembly resolution establishing
+     that outstanding Special Rapporteur visit requests of more than two years'
+     duration be treated as automatic standing invitations, unless the state
+     formally objects and provides written justification.
+
+────────────────────────────────────────────
+PART IV — OPERATIONAL PROVISIONS
+────────────────────────────────────────────
+
+ARTICLE 8 — Diplomatic Coordination
+
+8.1  The Parties will coordinate voting positions in the UNHRC on questions
+     relating to refugee protection, IDP frameworks, and international body
+     cooperation, and will consult prior to tabling any resolution in these areas.
+
+8.2  The Parties will establish a bilateral working group that convenes quarterly
+     to review progress under this Agreement and coordinate strategy in upcoming
+     UNHRC sessions.
+
+ARTICLE 9 — Entry Into Force and Review
+
+9.1  This Agreement enters into force upon signature by authorised representatives
+     of both Parties.
+
+9.2  The Agreement is subject to review every two years and may be extended,
+     amended, or terminated by mutual written consent.
+
+────────────────────────────────────────────
+
+IN WITNESS WHEREOF the undersigned, duly authorised, have signed this Agreement.
+
+For the French Republic:         For the Federal Republic of Germany:
+
+_________________________        _________________________
+[Signatory]                      [Signatory]
+Delegation to the UNHRC          Delegation to the UNHRC</div>
+  </div>
+
+  <!-- MULTILATERAL -->
+  <div class="card">
+    <button class="copy-btn" onclick="copyCard(this)">Copy</button>
+    <div class="card-label">Multilateral Treaty · Western Democratic Bloc</div>
+    <div class="card-title">Coalition Framework for International Protection Reform and Human Rights Body Strengthening</div>
+    <div style="margin-top: 8px;" class="alert alert-blue">Proposed founding signatories: France, Germany, Sweden, Canada, New Zealand, Netherlands, Belgium. Open to Japan, South Korea, Brazil as associate signatories.</div>
+    <div class="treaty-doc">MULTILATERAL FRAMEWORK DECLARATION AND ACTION PLAN
+
+COALITION FOR INTERNATIONAL PROTECTION REFORM
+AND HUMAN RIGHTS INSTITUTIONAL STRENGTHENING
+
+────────────────────────────────────────────
+FOUNDING SIGNATORIES
+────────────────────────────────────────────
+
+French Republic · Federal Republic of Germany · Kingdom of Sweden
+Canada · New Zealand · Kingdom of the Netherlands · Kingdom of Belgium
+
+[Associate Signatories: Japan · Republic of Korea · Federative Republic of Brazil]
+
+────────────────────────────────────────────
+PREAMBLE
+────────────────────────────────────────────
+
+WE, the undersigned states, liberal democracies committed to the international
+rules-based order and to the universality of human rights,
+
+ALARMED that 117 million people are forcibly displaced as of 2024 — the highest
+figure recorded since systematic measurement began,
+
+RECOGNISING that the international refugee protection framework, anchored in the
+1951 Convention, was not designed for the scale, diversity, or drivers of contemporary
+displacement, including protracted conflict, climate change, and statelessness,
+
+NOTING with concern that the current international burden-sharing architecture is
+voluntary, structurally uneven, and systematically transfers disproportionate responsibility
+onto lower-income host states in the Global South,
+
+AFFIRMING that international bodies including UNHCR, OHCHR, and the treaty body
+system can only function effectively when member states provide consistent, predictable,
+and unconditional cooperation,
+
+ACKNOWLEDGING that our own states have at times fallen short of the standards we
+advocate — and that credibility in this coalition requires self-application of its principles,
+
+COMMIT to the following framework for action:
+
+────────────────────────────────────────────
+PILLAR I — EXPANDING THE PROTECTION FRAMEWORK
+────────────────────────────────────────────
+
+COMMITMENT 1 — Climate Displacement Legal Recognition
+
+Signatory states commit to jointly advancing, in all relevant international fora, the
+formal recognition of climate-displaced persons as a distinct protected category in
+international law, and will co-author model treaty language for submission to UNHCR
+by the next Executive Committee session.
+
+COMMITMENT 2 — Statelessness Eradication
+
+Signatory states commit to the UNHCR's #IBelong campaign targets, to acceding to
+the 1954 Convention Relating to the Status of Stateless Persons and the 1961
+Convention on the Reduction of Statelessness where not yet ratified, and to tabling
+a joint resolution in the UNHRC on statelessness reduction benchmarks.
+
+COMMITMENT 3 — IDP Framework Binding Upgrade
+
+Signatory states commit to jointly advancing a binding international framework for
+the protection of internally displaced persons based on the Kampala Convention model,
+recognising it as the most operationally credible existing template for state obligation
+in IDP protection.
+
+────────────────────────────────────────────
+PILLAR II — BURDEN-SHARING REFORM
+────────────────────────────────────────────
+
+COMMITMENT 4 — GDP-Linked UNHCR Funding
+
+Signatory states commit to contributing to UNHCR at a level equivalent to no less
+than 0.05% of their GDP annually, and to jointly advocating for a UN General Assembly
+resolution establishing assessed contributions to UNHCR as a mandatory mechanism
+for all member states on a proportional GDP basis.
+
+COMMITMENT 5 — Host-State Compensation Architecture
+
+Signatory states commit to advancing a formal host-state compensation mechanism
+through which high-income states provide development finance and technical assistance
+to lower-income states that host disproportionate refugee populations, administered
+through UNHCR and subject to independent monitoring.
+
+COMMITMENT 6 — Anti-Deterrence Commitment
+
+Signatory states commit to reviewing and, where necessary, reforming domestic
+asylum policies that function primarily as deterrence rather than protection — including
+offshore processing arrangements, pushback operations, and application inadmissibility
+rules that structurally prevent access to asylum — within 24 months of signing.
+
+────────────────────────────────────────────
+PILLAR III — INTERNATIONAL BODY COOPERATION
+────────────────────────────────────────────
+
+COMMITMENT 7 — Standing Invitation Policy
+
+All signatory states maintain standing open invitations to all UN Special Procedure
+mandate holders and commit to processing visit requests within 60 days of submission.
+Signatory states agree to jointly advocate for a General Assembly resolution making
+standing invitations the default position for all member states.
+
+COMMITMENT 8 — OHCHR Funding Floor
+
+Signatory states commit to jointly advocating for an increase in OHCHR's assessed
+budget allocation from its current level of 0.49% of the UN budget to a minimum of
+1.5% over a five-year phased implementation period.
+
+COMMITMENT 9 — UPR Implementation Verification
+
+Signatory states support the creation of an independent UPR Implementation Monitoring
+Mechanism — an expert panel with access to state data, civil society input, and
+authority to publish public compliance assessments — and commit to its establishment
+as a formal subsidiary mechanism of the Human Rights Council.
+
+COMMITMENT 10 — Civil Society Access Guarantee
+
+Signatory states commit to ensuring that civil society organisations operating in their
+territories face no legal or administrative obstruction to submitting reports to, or
+participating in, UN human rights body processes — and will jointly raise obstruction
+of civil society access as a human rights concern in relevant country-specific debates.
+
+────────────────────────────────────────────
+PILLAR IV — COALITION GOVERNANCE
+────────────────────────────────────────────
+
+COMMITMENT 11 — Annual Coalition Review
+
+Signatory states will conduct an annual review of implementation under this Framework,
+to be presented publicly and submitted to the UNHRC Secretariat as a coalition
+accountability document.
+
+COMMITMENT 12 — Expansion Protocol
+
+The Coalition is open to any democratic state that accepts all Commitments herein.
+Accession requires unanimous consent of founding signatories. Associate status,
+limited to Pillars I and III, is available by simple majority.
+
+COMMITMENT 13 — Self-Application and Accountability
+
+Signatory states explicitly acknowledge that this Framework applies to their own
+conduct and that any member found in material breach of its Commitments, as
+determined by the Annual Review panel, will be subject to a formal accountability
+process within the coalition prior to any external criticism of other states.
+
+────────────────────────────────────────────
+
+SIGNED at [location], on behalf of the undersigned delegations:
+
+FRANCE ________________________   GERMANY ______________________
+
+SWEDEN _______________________   CANADA _______________________
+
+NEW ZEALAND __________________   NETHERLANDS __________________
+
+BELGIUM ______________________
+
+[ASSOCIATE SIGNATORIES]
+
+JAPAN ________________________   REPUBLIC OF KOREA ____________
+
+BRAZIL _______________________</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ WP -->
+<div id="tab-wp" class="tab">
+  <div class="section-label">Working Paper · Western Democratic Bloc</div>
+  <div class="section-title">Draft Resolution</div>
+  <div class="section-desc">Solo-authored by France, written for Western bloc co-sponsorship. Operative clauses are clustered so individual allies can own specific provisions without endorsing the whole.</div>
+
+  <div class="alert alert-blue">Co-sponsor target allocation: OPs 1–2 → Germany + Sweden (legal framework). OPs 3–4 → Canada + New Zealand (climate + civil society). OPs 5–6 → Netherlands + Belgium (funding). OPs 7–8 → South Africa + Kenya (host-state/Kampala). OPs 9–10 → Any Global South delegation (burden-sharing).</div>
+
+  <div class="card">
+    <button class="copy-btn" onclick="copyCard(this)">Copy</button>
+    <div class="card-title">DRAFT RESOLUTION — UNHRC Session<br><span style="font-weight:400; font-size:13px; color:var(--muted)">Submitted by France | Co-sponsored by: [open]</span></div>
+
+    <div style="margin-top: 20px;">
+      <div class="wp-clause-type preamb" style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin:16px 0 6px;">Preambular Clauses</div>
+
+      <div class="wp-clause">
+        <strong>PP1.</strong> <em>Recalling</em> General Assembly Resolution 71/1 (New York Declaration for Refugees and Migrants) and the subsequent Global Compact on Refugees (2018), which established a framework for international burden-sharing on refugee protection,
+      </div>
+      <div class="wp-clause">
+        <strong>PP2.</strong> <em>Reaffirming</em> the non-derogable nature of the principle of non-refoulement under Article 33 of the 1951 Convention Relating to the Status of Refugees, as affirmed by the UN Human Rights Committee in General Comment No. 36,
+      </div>
+      <div class="wp-clause">
+        <strong>PP3.</strong> <em>Deeply concerned</em> that 117.3 million people are forcibly displaced as of 2024, representing the highest recorded figure and a 50% increase over the preceding decade, and that existing protection frameworks were not designed for this scale or diversity of displacement,
+      </div>
+      <div class="wp-clause">
+        <strong>PP4.</strong> <em>Noting with alarm</em> that climate-induced displacement currently has no binding legal protection framework in international law, notwithstanding the 2020 UN Human Rights Committee ruling in Teitiota v. New Zealand establishing that climate conditions may constitute a threat to life triggering non-refoulement obligations,
+      </div>
+      <div class="wp-clause">
+        <strong>PP5.</strong> <em>Recognising</em> that the African Union's 2009 Kampala Convention constitutes the most operationally advanced binding framework for internally displaced persons and represents a model for global adoption,
+      </div>
+      <div class="wp-clause">
+        <strong>PP6.</strong> <em>Acknowledging</em> that burden-sharing under the current voluntary architecture is structurally inequitable, with the five countries hosting the largest refugee populations — all lower-middle or low-income states — accounting for 37% of global refugee hosting,
+      </div>
+      <div class="wp-clause">
+        <strong>PP7.</strong> <em>Concerned</em> that UNHCR faced a funding gap of $2.1 billion USD in 2023 under a voluntary contribution model that is structurally insufficient to meet operational requirements,
+      </div>
+      <div class="wp-clause">
+        <strong>PP8.</strong> <em>Affirming</em> that effective cooperation with international human rights bodies, including this Council, OHCHR, and UN treaty bodies, is an obligation arising from UN Charter Articles 55 and 56 and is not subject to unilateral suspension by member states on sovereignty grounds,
+      </div>
+      <div class="wp-clause">
+        <strong>PP9.</strong> <em>Recognising</em> that women, children, and persons belonging to religious or ethnic minorities face compounded protection risks in displacement contexts and require targeted protection mechanisms,
+      </div>
+      <div class="wp-clause">
+        <strong>PP10.</strong> <em>Taking note</em> of the Christchurch Call to Eliminate Terrorist and Violent Extremist Content Online and its relevance to the conditions that produce displacement through organised hate-based violence,
+      </div>
+
+      <div class="wp-clause-type operat" style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin:20px 0 6px;">Operative Clauses</div>
+
+      <div class="wp-clause">
+        <strong>OP1.</strong> <em>Calls upon</em> all member states to immediately cease practices of refoulement, pushback operations, or administrative inadmissibility determinations that have the effect of denying access to asylum to individuals who would qualify for refugee status or subsidiary protection under the 1951 Convention framework, and to ensure that non-refoulement obligations are applied without derogation;
+      </div>
+      <div class="wp-clause">
+        <strong>OP2.</strong> <em>Urges</em> the General Assembly to convene an expert diplomatic conference to develop a Climate Displacement Protocol to the 1951 Convention, establishing legal recognition, protection standards, and durable solution frameworks for persons displaced primarily by climate events, with the first session to be convened within 18 months;
+      </div>
+      <div class="wp-clause">
+        <strong>OP3.</strong> <em>Encourages</em> all member states not yet party to the 1954 Convention Relating to the Status of Stateless Persons and the 1961 Convention on the Reduction of Statelessness to accede to both instruments, and requests OHCHR to publish an annual report on statelessness reduction progress;
+      </div>
+      <div class="wp-clause">
+        <strong>OP4.</strong> <em>Recommends</em> the adoption of a binding global framework for internally displaced persons modelled on the African Union Kampala Convention, with adaptation for non-regional contexts, and requests the Secretary-General to commission a drafting process through OHCHR;
+      </div>
+      <div class="wp-clause">
+        <strong>OP5.</strong> <em>Calls for</em> the establishment of a mandatory assessed contribution mechanism for UNHCR, based on a GDP-proportional formula, to replace the current voluntary contribution system, and requests the General Assembly to consider this mechanism at its next regular session;
+      </div>
+      <div class="wp-clause">
+        <strong>OP6.</strong> <em>Requests</em> the Secretary-General to present to the General Assembly a proposal for a Host-State Support Facility, administered through UNHCR, through which high-income member states provide direct budget support and technical capacity to lower-income states hosting disproportionate refugee populations;
+      </div>
+      <div class="wp-clause">
+        <strong>OP7.</strong> <em>Calls upon</em> all member states to grant standing open invitations to all UN Special Procedure mandate holders, and urges states with outstanding visit requests of more than 24 months to respond within 90 days or provide written justification for further delay to the relevant Special Rapporteur and to this Council;
+      </div>
+      <div class="wp-clause">
+        <strong>OP8.</strong> <em>Recommends</em> the establishment of an independent UPR Implementation Monitoring Mechanism, comprising independent experts with authority to assess member state implementation of accepted UPR recommendations and publish publicly accessible compliance assessments at the midpoint of each review cycle;
+      </div>
+      <div class="wp-clause">
+        <strong>OP9.</strong> <em>Requests</em> that the OHCHR establish minimum access standards for civil society organisations participating in UN human rights processes, and that member states that restrict civil society access to international mechanisms be subject to formal notification to this Council;
+      </div>
+      <div class="wp-clause">
+        <strong>OP10.</strong> <em>Decides</em> to remain actively seized of this matter and requests the High Commissioner for Refugees to submit a progress report to this Council at its next session on the implementation of the measures contained herein, including specific data on funding gap reduction, refoulement incident reporting, and host-state burden-sharing metrics.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ COMPETITION -->
+<div id="tab-competition" class="tab">
+  <div class="section-label">Strategic Intelligence</div>
+  <div class="section-title">Competition Analysis</div>
+  <div class="section-desc">Somalia, China, Venezuela, Iran. What they'll say, how to counter, and the line that ends their argument in the room.</div>
+
+  <div class="comp-card">
+    <div class="comp-country">🇸🇴 Somalia</div>
+    <div class="comp-threat">THREAT LEVEL: HIGH · Will be aggressive, likely to challenge Western credibility</div>
+
+    <div class="comp-section">
+      <div class="comp-section-title">What they'll argue</div>
+      <p>Somalia will lean hard on the hypocrisy angle — Western states closing borders while preaching protection. They'll cite European pushbacks in the Mediterranean, UK Rwanda policy, and the EU's externalisation deals with Libya and Tunisia. They'll frame refugee rights as a Global South burden while Western states write resolutions about it. They may try to advance regional solutions framed around African solidarity to lock you out of African Group support.</p>
+    </div>
+
+    <div class="comp-section">
+      <div class="comp-section-title">France's counter strategy</div>
+      <p>Don't deflect the hypocrisy charge — absorb it. "France acknowledges that European border policy has not always been consistent with the Convention framework — we are naming that rather than defending it." This takes the ammunition out of Somalia's hands. Then pivot: "But self-criticism is not the same as equivalence. Somalia has 3.8 million internally displaced citizens, no binding IDP mechanism, and Al-Shabaab territory where no UNHCR access exists. France is here to improve the international system. What is Somalia here to do?"</p>
+    </div>
+
+    <div class="comp-section">
+      <div class="comp-section-title">The line that ends it</div>
+      <p>"Pointing at France's flaws does not protect a single displaced Somali. France is proposing specific mechanisms. Somalia is proposing a deflection."</p>
+    </div>
+
+    <div class="comp-section">
+      <div class="comp-section-title">POI to have ready</div>
+      <p>"The delegation speaks to Western responsibility. France accepts that critique. Can the delegation now speak to Somalia's own responsibility — specifically, what binding protection mechanism the Somali government has established for the 3.8 million Somalis displaced within its own borders, in territory it claims sovereignty over?"</p>
+    </div>
+  </div>
+
+  <div class="comp-card">
+    <div class="comp-country">🇨🇳 China</div>
+    <div class="comp-threat">THREAT LEVEL: VERY HIGH · Will attempt to reframe the entire agenda around economic development</div>
+
+    <div class="comp-section">
+      <div class="comp-section-title">What they'll argue</div>
+      <p>China will argue that the root cause of displacement is poverty and underdevelopment — and that China's Belt and Road and development assistance is the real solution. They'll invoke state sovereignty heavily, resist any binding mechanism, cite their hosting of North Korean refugees (without acknowledging the forced repatriation problem), and try to build a bloc of developing world delegations by framing France's position as neocolonial. They will not engage substantively on Xinjiang unless pushed. On cooperation, they'll praise multilateralism in the abstract while blocking every specific mechanism.</p>
+    </div>
+
+    <div class="comp-section">
+      <div class="comp-section-title">France's counter strategy</div>
+      <p>On development: "China is correct that development reduces displacement — and France also funds development. But development is a 20-year solution. Non-refoulement is a right that exists today, and the people in Lesbos and Kakuma camp need it today, not in 2044." On sovereignty: use the Charter argument — they signed it. On developing world bloc: acknowledge China's development role, then split it: "China builds roads. China has never resettled a single UNHCR-recognised refugee." That gap is real and delegates know it.</p>
+    </div>
+
+    <div class="comp-section">
+      <div class="comp-section-title">The line that ends it</div>
+      <p>"China has accepted zero refugees for resettlement while speaking about multilateral solutions for 90 minutes. That is not a position. That is a performance."</p>
+    </div>
+
+    <div class="comp-section">
+      <div class="comp-section-title">Nuclear POI if they go after France on colonialism</div>
+      <p>"Using France's colonial history to deflect accountability for present-day forced repatriation of North Korean refugees to a state where they face execution is not a serious argument. It is a distraction. France's history and China's present-day conduct are separate questions, and this committee should insist they be treated separately."</p>
+    </div>
+  </div>
+
+  <div class="comp-card">
+    <div class="comp-country">🇻🇪 Venezuela</div>
+    <div class="comp-threat">THREAT LEVEL: MEDIUM · Rhetorically capable, factually exposed</div>
+
+    <div class="comp-section">
+      <div class="comp-section-title">What they'll argue</div>
+      <p>Venezuela will go hard on anti-imperialism — frame the migration crisis as a product of US sanctions and Western economic warfare rather than government policy. They'll position themselves as victims of Western interference, cite the Caracas Declaration on refugee definitions, and try to advance CELAC or regional Latin American frameworks as alternatives to "Western-dominated" UN mechanisms. Their delegate will likely be loud and politically aggressive.</p>
+    </div>
+
+    <div class="comp-section">
+      <div class="comp-section-title">France's counter strategy</div>
+      <p>Don't get into the sanctions debate — that's a political argument with no clean winner in an UNHRC committee. Stay technical. "France is not here to adjudicate the causes of Venezuelan emigration. France is here because 7.7 million Venezuelans have left their country — the largest displacement event in Latin American history — and they need protection regardless of the political argument about why they left. Does Venezuela support the non-refoulement principle for its own citizens abroad? Full stop." Make them answer the protection question.</p>
+    </div>
+
+    <div class="comp-section">
+      <div class="comp-section-title">The line that ends it</div>
+      <p>"7.7 million people left Venezuela. Whatever the cause, they are outside their country and they need legal protection. France is proposing that protection. What is Venezuela proposing — other than an explanation for why they left?"</p>
+    </div>
+  </div>
+
+  <div class="comp-card">
+    <div class="comp-country">🇮🇷 Iran</div>
+    <div class="comp-threat">THREAT LEVEL: HIGH · Will attack French secularism and cooperation mechanisms simultaneously</div>
+
+    <div class="comp-section">
+      <div class="comp-section-title">What they'll argue</div>
+      <p>Iran will attack from two angles. First, they'll use their genuine refugee-hosting record (3.4 million Afghans) as a shield to establish credibility — and it's real, so don't dismiss it. Second, they'll use that credibility to then attack binding international mechanisms as Western impositions, question UNHCR's neutrality, and invoke Islamic solidarity as a counter-framework. On cooperation, they'll argue the UN human rights system is politicised and selectively enforced against Muslim-majority states. They may also attack France's laïcité as a form of religious discrimination in a displacement-adjacent argument.</p>
+    </div>
+
+    <div class="comp-section">
+      <div class="comp-section-title">France's counter strategy</div>
+      <p>Acknowledge the Afghan hosting record explicitly — it's real and you'll lose credibility if you ignore it. "France acknowledges Iran hosts 3.4 million Afghan refugees and this represents a genuine burden that the international community has not adequately supported." Then pivot: "But hosting refugees and providing them with legal rights are two different things. Iranian policy denies Afghan refugees documentation, work rights, and education access in many cases. France is proposing a framework that would actually support Iran's position by providing international funding for host states — Iran has a material interest in supporting it." On laïcité: "France's domestic secularism is a constitutional arrangement that applies equally to all religions. It is not a basis for displacement and it is not what is being discussed in this chamber."</p>
+    </div>
+
+    <div class="comp-section">
+      <div class="comp-section-title">The line that ends it</div>
+      <p>"Iran hosts 3.4 million Afghans without documentation or work rights. France is proposing international funding and a legal framework that would benefit those exact people. If Iran opposes this proposal, Iran should explain to this committee why."</p>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <div class="card">
+    <div class="card-title">Hard Questions You'll Get — and How to Answer Them</div>
+    <div style="margin-top: 16px;">
+      <div class="chit-card" style="border-color: rgba(237,41,57,0.2);">
+        <div class="chit-label" style="color: #f87171;">Q: France has pushed back migrants in the Mediterranean. Isn't this hypocritical?</div>
+        <div class="chit-text">France acknowledges that European border operations have not always been consistent with the Convention's non-refoulement standard. France is naming that — not defending it. France's position in this committee is precisely that the current system, including France's own practice, needs binding reform. The proposal France is advancing would constrain France as much as any other state. That is not hypocrisy. That is the difference between acknowledging a problem and being the problem.</div>
+      </div>
+      <div class="chit-card" style="border-color: rgba(237,41,57,0.2);">
+        <div class="chit-label" style="color: #f87171;">Q: France's colonial history disqualifies it from lecturing others on rights.</div>
+        <div class="chit-text">France's colonial history is a fact and France does not dispute it. It is also irrelevant to whether the non-refoulement principle protects refugees today, whether climate displacement is real, and whether UNHCR should be funded adequately. Historical guilt is not a logical argument against specific policy proposals. If the delegation believes colonial history is relevant, France invites it to explain which specific clause in this working paper is invalidated by it.</div>
+      </div>
+      <div class="chit-card" style="border-color: rgba(237,41,57,0.2);">
+        <div class="chit-label" style="color: #f87171;">Q: Binding mechanisms infringe on state sovereignty.</div>
+        <div class="chit-text">Every state in this room signed the UN Charter. Article 55 and 56 of that Charter create binding human rights obligations. Every state also signed the 1951 Convention — a binding treaty with binding obligations. The question is not whether binding obligations are acceptable in principle, since every member state has already answered yes to that. The question is whether we enforce the ones we've already agreed to. France's position is yes.</div>
+      </div>
+      <div class="chit-card" style="border-color: rgba(237,41,57,0.2);">
+        <div class="chit-label" style="color: #f87171;">Q: Why should developing states trust a Western-led framework?</div>
+        <div class="chit-text">France's proposal specifically benefits developing host states — Turkey, Uganda, Lebanon, Bangladesh — through mandatory burden-sharing and direct financial transfers. The current voluntary system benefits wealthy states who can opt out. France is proposing to make wealthy states, including France, pay whether they want to or not. If that is a Western framework, it is a strange one. France would also point out that the Kampala Convention — an African instrument — is explicitly named in this working paper as the model for global IDP reform.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- end main -->
+
+<button class="scroll-hint" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+function showTab(name) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  event.target.classList.add('active');
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+function copyCard(btn) {
+  const card = btn.closest('.card');
+  const text = card.querySelector('.speech-text, .treaty-doc')?.innerText || card.innerText;
+  navigator.clipboard.writeText(text.trim()).then(() => {
+    btn.textContent = 'Copied ✓';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+  });
+}
+</script>
+
+</body>
+</html>
